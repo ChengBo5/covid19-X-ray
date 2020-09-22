@@ -14,7 +14,14 @@ import net_model.resnet as resnet
 import net_model.gcnet as gcnet
 import numpy as np
 from sklearn.metrics import accuracy_score,f1_score,roc_auc_score,recall_score,precision_score
+
+import matplotlib
+matplotlib.rcParams['backend'] = 'SVG'
 import matplotlib.pyplot as plt
+
+plt.plot([1,2,3])
+plt.savefig('kankan.svg',format='svg')
+
 
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 
@@ -183,6 +190,7 @@ if __name__ == '__main__':
     plt.subplot(212)
     plt.plot(accuracy_history, color='g', linestyle='--')
     plt.xlabel('Training epoch')
-    plt.ylabel('accury')
+    plt.ylabel('accuracy')
     plt.title('Recognition')
-    plt.savefig(path_dir+'/los_s{}.jpg'.format(opt.net))    
+    plt.savefig(path_dir+'/loss_{}.svg'.format(opt.net),format='svg')
+    plt.savefig(path_dir+'/loss_{}.jpg'.format(opt.net))    
